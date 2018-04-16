@@ -2,6 +2,7 @@
 
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Slim\Exception\NotFoundException;
 
 // Routes
 
