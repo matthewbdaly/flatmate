@@ -7,9 +7,26 @@ use Slim\Exception\NotFoundException;
 // Routes
 
 $app->get('/[{name}]', function (Request $request, Response $response, array $args) {
-    // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
+    // Does that page exist?
+	$name = isset($args['name']) ? $args['name'] : 'index';
+    $filename = getcwd() . '/../content/' . $name . '.md';
+    if (file_exists($filename)) {
+        // Get content
+        $rawcontent = file_get_contents($filename);
+        $document = $this->parser->parse($rawcontent);
+        $content = $document->getContent();
 
-    // Render index view
-    return $this->renderer->render($response, 'index.phtml', $args);
+        // Get title
+        $yaml = $document->getYAML();
+        $title = $yaml['title'];
+
+        // Render it with the template
+        $data = array(
+            'title' => $title,
+            'content' => $content
+        );
+        return $this->renderer->render($response, 'template.phtml', $data);
+    } else {
+        throw new NotFoundException($request, $response);
+    }
 });
