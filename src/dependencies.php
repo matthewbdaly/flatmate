@@ -1,5 +1,6 @@
 <?php
 // DIC configuration
+use Mni\FrontYAML\Parser;
 
 $container = $app->getContainer();
 
@@ -16,4 +17,9 @@ $container['logger'] = function ($c) {
     $logger->pushProcessor(new Monolog\Processor\UidProcessor());
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
     return $logger;
+};
+
+// YAML parser
+$container['parser'] = function ($c) {
+    return new Parser;
 };
