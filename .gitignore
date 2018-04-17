@@ -4,3 +4,4 @@
 *.swp
 tags
 cache/
+/node_modules/
