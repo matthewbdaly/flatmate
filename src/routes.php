@@ -25,7 +25,7 @@ $app->get('/[{name}]', function (Request $request, Response $response, array $ar
             'title' => $title,
             'content' => $content
         );
-        return $this->renderer->render($response, 'template.phtml', $data);
+        return $this->view->render($response, 'template.phtml', $data);
     } else {
         throw new NotFoundException($request, $response);
     }

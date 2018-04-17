@@ -26,8 +26,8 @@ $container['parser'] = function ($c) {
 
 // Use Twig for views
 $container['view'] = function ($container) {
-    $view = new \Slim\Views\Twig('path/to/templates', [
-        'cache' => 'path/to/cache'
+    $view = new \Slim\Views\Twig('../templates', [
+        'cache' => '../cache'
     ]);
 
     // Instantiate and add Slim specific extension
