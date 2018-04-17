@@ -19,7 +19,7 @@ $app->get('/[{name}]', function (Request $request, Response $response, array $ar
         // Get title
         $yaml = $document->getYAML();
         $title = $yaml['title'];
-        $layout = $yaml['layout'].'.phtml';
+        $layout = isset($yaml['layout']) ? $yaml['layout'].'.phtml' : 'default.phtml';
 
         // Render it with the template
         $data = array(
