@@ -19,13 +19,14 @@ $app->get('/[{name}]', function (Request $request, Response $response, array $ar
         // Get title
         $yaml = $document->getYAML();
         $title = $yaml['title'];
+        $layout = $yaml['layout'].'.phtml';
 
         // Render it with the template
         $data = array(
             'title' => $title,
             'content' => $content
         );
-        return $this->view->render($response, 'template.phtml', $data);
+        return $this->view->render($response, $layout, $data);
     } else {
         throw new NotFoundException($request, $response);
     }
