@@ -14,18 +14,13 @@ $app->get('/[{name}]', function (Request $request, Response $response, array $ar
         // Get content
         $rawcontent = file_get_contents($filename);
         $document = $this->parser->parse($rawcontent);
-        $content = $document->getContent();
 
         // Get title
-        $yaml = $document->getYAML();
-        $title = $yaml['title'];
-        $layout = isset($yaml['layout']) ? $yaml['layout'].'.phtml' : 'default.phtml';
+        $data = $document->getYAML();
+        $data['content'] = $document->getContent();
+        $title = $data['title'];
+        $layout = isset($data['layout']) ? $data['layout'].'.phtml' : 'default.phtml';
 
-        // Render it with the template
-        $data = array(
-            'title' => $title,
-            'content' => $content
-        );
         return $this->view->render($response, $layout, $data);
     } else {
         throw new NotFoundException($request, $response);
