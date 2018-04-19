@@ -1,0 +1,6 @@
+name: flatmate
+recipe: lemp
+config:
+  webroot: public
+  php: '7.1'
+  via: nginx
