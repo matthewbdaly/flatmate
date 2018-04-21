@@ -32,6 +32,17 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
      */
     public function runApp($requestMethod, $requestUri, $requestData = null)
     {
+        // Set paths
+        if (!defined('BASE_DIR')) {
+            define('BASE_DIR', __DIR__.'/../');
+        }
+        if (!defined('TEMPLATE_PATH')) {
+            define('TEMPLATE_PATH', BASE_DIR.'fixtures/templates');
+        }
+        if (!defined('CONTENT_PATH')) {
+            define('CONTENT_PATH', BASE_DIR.'fixtures/content/');
+        }
+
         // Create a mock environment for testing with
         $environment = Environment::mock(
             [
