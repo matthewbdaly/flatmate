@@ -11,6 +11,14 @@ if (PHP_SAPI == 'cli-server') {
 
 require __DIR__ . '/../vendor/autoload.php';
 
+define('BASE_DIR', __DIR__.'/../');
+if (!defined('CONTENT_PATH')) {
+    define('CONTENT_PATH', 'content/');
+}
+if (!defined('TEMPLATE_PATH')) {
+    define('TEMPLATE_PATH', 'templates/');
+}
+
 session_start();
 
 // Instantiate the app

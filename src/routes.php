@@ -9,7 +9,7 @@ use Slim\Exception\NotFoundException;
 $app->get('/[{name}]', function (Request $request, Response $response, array $args) {
     // Does that page exist?
 	$name = isset($args['name']) ? $args['name'] : 'index';
-    $filename = getcwd() . '/../content/' . $name . '.md';
+    $filename = BASE_DIR.CONTENT_PATH. $name . '.md';
     if (file_exists($filename)) {
         // Get content
         $rawcontent = file_get_contents($filename);
