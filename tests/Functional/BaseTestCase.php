@@ -37,10 +37,10 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
             define('BASE_DIR', __DIR__.'/../');
         }
         if (!defined('TEMPLATE_PATH')) {
-            define('TEMPLATE_PATH', BASE_DIR.'fixtures/templates');
+            define('TEMPLATE_PATH', 'fixtures/templates');
         }
         if (!defined('CONTENT_PATH')) {
-            define('CONTENT_PATH', BASE_DIR.'fixtures/content/');
+            define('CONTENT_PATH', 'fixtures/content/');
         }
 
         // Create a mock environment for testing with

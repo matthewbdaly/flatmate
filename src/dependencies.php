@@ -26,7 +26,7 @@ $container['parser'] = function ($c) {
 
 // Use Twig for views
 $container['view'] = function ($container) {
-    $view = new \Slim\Views\Twig('../templates', [
+    $view = new \Slim\Views\Twig(BASE_DIR.TEMPLATE_PATH, [
         'cache' => '../cache'
     ]);
 
