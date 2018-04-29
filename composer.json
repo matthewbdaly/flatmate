@@ -25,6 +25,11 @@
         "psy/psysh": "^0.9.3",
         "satooshi/php-coveralls": "^2.0"
     },
+    "autoload": {
+        "psr-4": {
+            "Flatmate\\Console\\": "src/Console/"
+        }
+    },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"

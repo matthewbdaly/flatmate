@@ -5,6 +5,8 @@ require __DIR__.'/vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
 
+define('CONSOLE_ROOT', __DIR__);
 $app = new Application();
+$app->add(new Flatmate\Console\ClearCacheCommand);
 
 $app->run();
